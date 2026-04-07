@@ -52,7 +52,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* 📱 CELULAR */
+/* 📱 CELULAR → más pequeñas pero misma separación */
 @media (max-width:600px){
 
 .slider{
@@ -61,7 +61,7 @@ height:60vh;
 }
 
 .slide{
-width:20vw;   /* 🔽 más pequeñas */
+width:20vw;
 height:28vw;
 }
 
@@ -94,9 +94,9 @@ let auto = true;
 const total = slides.length;
 const step = 360 / total;
 
-/* 🔧 PROFUNDIDAD (más pegadas en móvil) */
+/* 🔧 MISMA PROFUNDIDAD PARA TODOS */
 function getZ(){
-return window.innerWidth < 600 ? 200 : 350;
+return 350;
 }
 
 /* POSICIÓN */
@@ -122,7 +122,7 @@ pauseAuto();
 });
 });
 
-/* 🖱️ MOUSE */
+/* MOUSE */
 document.addEventListener("mousemove", (e)=>{
 if(!auto){
 const centerX = window.innerWidth / 2;
@@ -131,7 +131,7 @@ targetAngle += diff * 0.2;
 }
 });
 
-/* 📱 TOUCH */
+/* TOUCH */
 let startX = 0;
 
 document.addEventListener("touchstart", (e)=>{
@@ -146,7 +146,7 @@ targetAngle += diff * 0.05;
 startX = moveX;
 });
 
-/* ⏸️ PAUSA */
+/* PAUSA */
 function pauseAuto(){
 auto = false;
 clearTimeout(window.resumeTimer);
@@ -156,7 +156,7 @@ auto = true;
 }, 3000);
 }
 
-/* 🔄 GIRO AUTOMÁTICO */
+/* GIRO AUTOMÁTICO */
 function autoRotate(){
 if(auto){
 targetAngle += 0.03;
@@ -166,7 +166,7 @@ requestAnimationFrame(autoRotate);
 
 autoRotate();
 
-/* 🎯 ANIMACIÓN */
+/* ANIMACIÓN */
 function animate(){
 angle += (targetAngle - angle) * 0.05;
 slider.style.transform = `
