@@ -52,7 +52,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* 📱 CELULAR → más pequeñas pero misma separación */
+/* 📱 CELULAR */
 @media (max-width:600px){
 
 .slider{
@@ -94,9 +94,9 @@ let auto = true;
 const total = slides.length;
 const step = 360 / total;
 
-/* 🔧 MISMA PROFUNDIDAD PARA TODOS */
+/* 🔧 PROFUNDIDAD OPTIMIZADA */
 function getZ(){
-return 350;
+return window.innerWidth < 600 ? 240 : 350;
 }
 
 /* POSICIÓN */
