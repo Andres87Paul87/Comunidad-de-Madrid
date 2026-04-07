@@ -14,7 +14,7 @@ height:100vh;
 overflow:hidden;
 }
 
-/* CONTENEDOR CENTRADO PERFECTO */
+/* CONTENEDOR CENTRADO */
 .slider{
 position:absolute;
 top:50%;
@@ -22,7 +22,6 @@ left:50%;
 transform: translate(-50%, -50%) perspective(1000px);
 transform-style: preserve-3d;
 
-/* Responsive con límites */
 width:80vw;
 height:50vh;
 max-width:600px;
@@ -53,7 +52,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* 📱 AJUSTE PARA TELÉFONO */
+/* 📱 TELÉFONO → MÁS PEQUEÑAS */
 @media (max-width:600px){
 
 .slider{
@@ -62,8 +61,10 @@ height:60vh;
 }
 
 .slide{
-width:45vw;
-height:55vw;
+width:28vw;   /* 🔽 más pequeñas */
+height:38vw;
+max-width:none;
+max-height:none;
 }
 
 }
@@ -94,9 +95,9 @@ let targetAngle = 0;
 const total = slides.length;
 const step = 360 / total;
 
-/* 🔧 Profundidad dinámica */
+/* 🔧 PROFUNDIDAD MEJORADA PARA MÓVIL */
 function getZ(){
-return window.innerWidth < 600 ? 180 : 350;
+return window.innerWidth < 600 ? 250 : 350;
 }
 
 /* POSICIÓN EN CÍRCULO */
@@ -114,21 +115,21 @@ translateZ(${z}px)
 positionSlides();
 window.addEventListener("resize", positionSlides);
 
-/* CLICK → CENTRAR */
+/* CLICK */
 slides.forEach((slide, i)=>{
 slide.addEventListener("click", ()=>{
 targetAngle = -i * step;
 });
 });
 
-/* 🖱️ MOUSE */
+/* MOUSE */
 document.addEventListener("mousemove", (e)=>{
 const centerX = window.innerWidth / 2;
 let diff = (e.clientX - centerX) / 50;
 targetAngle += diff * 0.2;
 });
 
-/* 📱 TOUCH */
+/* TOUCH */
 let startX = 0;
 
 document.addEventListener("touchstart", (e)=>{
@@ -142,7 +143,7 @@ targetAngle += diff * 0.05;
 startX = moveX;
 });
 
-/* 🎯 ANIMACIÓN */
+/* ANIMACIÓN */
 function animate(){
 angle += (targetAngle - angle) * 0.05;
 slider.style.transform = `
