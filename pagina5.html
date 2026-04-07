@@ -61,8 +61,8 @@ height:60vh;
 }
 
 .slide{
-width:22vw;  /* más pequeñas */
-height:30vw;
+width:20vw;   /* 🔽 más pequeñas */
+height:28vw;
 }
 
 }
@@ -89,14 +89,14 @@ const slider = document.getElementById("slider");
 
 let angle = 0;
 let targetAngle = 0;
-let auto = true; // controla auto-rotación
+let auto = true;
 
 const total = slides.length;
 const step = 360 / total;
 
-/* 🔧 PROFUNDIDAD */
+/* 🔧 PROFUNDIDAD (más pegadas en móvil) */
 function getZ(){
-return window.innerWidth < 600 ? 260 : 350;
+return window.innerWidth < 600 ? 200 : 350;
 }
 
 /* POSICIÓN */
@@ -146,20 +146,20 @@ targetAngle += diff * 0.05;
 startX = moveX;
 });
 
-/* ⏸️ PAUSA Y REANUDA */
+/* ⏸️ PAUSA */
 function pauseAuto(){
 auto = false;
 clearTimeout(window.resumeTimer);
 
 window.resumeTimer = setTimeout(()=>{
 auto = true;
-}, 3000); // vuelve a girar después de 3s
+}, 3000);
 }
 
-/* 🔄 GIRO AUTOMÁTICO (PC + MÓVIL) */
+/* 🔄 GIRO AUTOMÁTICO */
 function autoRotate(){
 if(auto){
-targetAngle += 0.03; // velocidad suave universal
+targetAngle += 0.03;
 }
 requestAnimationFrame(autoRotate);
 }
