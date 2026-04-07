@@ -52,7 +52,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* 📱 CELULAR → MÁS PEQUEÑAS */
+/* 📱 CELULAR */
 @media (max-width:600px){
 
 .slider{
@@ -61,7 +61,7 @@ height:60vh;
 }
 
 .slide{
-width:22vw;   /* 🔽 MÁS PEQUEÑAS */
+width:22vw;  /* más pequeñas */
 height:30vw;
 }
 
@@ -89,6 +89,7 @@ const slider = document.getElementById("slider");
 
 let angle = 0;
 let targetAngle = 0;
+let auto = true; // controla auto-rotación
 
 const total = slides.length;
 const step = 360 / total;
@@ -117,14 +118,17 @@ window.addEventListener("resize", positionSlides);
 slides.forEach((slide, i)=>{
 slide.addEventListener("click", ()=>{
 targetAngle = -i * step;
+pauseAuto();
 });
 });
 
 /* 🖱️ MOUSE */
 document.addEventListener("mousemove", (e)=>{
+if(!auto){
 const centerX = window.innerWidth / 2;
 let diff = (e.clientX - centerX) / 50;
 targetAngle += diff * 0.2;
+}
 });
 
 /* 📱 TOUCH */
@@ -132,6 +136,7 @@ let startX = 0;
 
 document.addEventListener("touchstart", (e)=>{
 startX = e.touches[0].clientX;
+pauseAuto();
 });
 
 document.addEventListener("touchmove", (e)=>{
@@ -141,9 +146,21 @@ targetAngle += diff * 0.05;
 startX = moveX;
 });
 
-/* 🔄 GIRO AUTOMÁTICO */
+/* ⏸️ PAUSA Y REANUDA */
+function pauseAuto(){
+auto = false;
+clearTimeout(window.resumeTimer);
+
+window.resumeTimer = setTimeout(()=>{
+auto = true;
+}, 3000); // vuelve a girar después de 3s
+}
+
+/* 🔄 GIRO AUTOMÁTICO (PC + MÓVIL) */
 function autoRotate(){
-targetAngle += 0.05; // velocidad (más bajo = más lento)
+if(auto){
+targetAngle += 0.03; // velocidad suave universal
+}
 requestAnimationFrame(autoRotate);
 }
 
