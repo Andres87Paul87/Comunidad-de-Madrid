@@ -3,33 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Director</title>
 
 <style>
 
-/* 🔴 EVITA SCROLL GLOBAL */
+/* 🔴 RESET TOTAL (clave para Google Sites) */
+*{
+    box-sizing:border-box;
+}
+
 html, body{
     margin:0;
     padding:0;
-    overflow:hidden; /* elimina scroll general */
+    width:100%;
     height:100%;
-}
-
-body{
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg,#020617,#0f172a);
+    overflow:hidden; /* elimina scroll */
     display:flex;
     justify-content:center;
     align-items:center;
+    background:#020617;
+    font-family:'Segoe UI', sans-serif;
 }
 
-/* CARD */
+/* CARD RESPONSIVE */
 .flip-card{
-    width:300px;
-    height:420px;
+    width:90vw;
+    height:90vh;
+    max-width:300px;
+    max-height:420px;
     perspective:1000px;
 }
 
+/* CONTENIDO */
 .flip-inner{
     width:100%;
     height:100%;
@@ -48,42 +52,42 @@ body{
     height:100%;
     border-radius:20px;
     backface-visibility:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.6);
     overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 /* FRENTE */
 .flip-front{
-    background:#000;
-    color:white;
     display:flex;
-    flex-direction:column;
     justify-content:flex-end;
-    text-align:center;
+    align-items:flex-end;
+    color:white;
 }
 
 .flip-front img{
     position:absolute;
     width:100%;
     height:100%;
-    object-fit:cover; /* 🔥 ajusta imagen sin deformar */
+    object-fit:cover; /* 🔥 ajusta sin desbordar */
     top:0;
     left:0;
 }
 
+/* TEXTO */
 .overlay{
-    position:relative;
+    width:100%;
     background:rgba(0,0,0,0.6);
-    padding:15px;
+    padding:12px;
+    text-align:center;
 }
 
 .role{
-    font-size:14px;
+    font-size:13px;
     color:#38bdf8;
 }
 
 .name{
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
 }
 
@@ -92,62 +96,38 @@ body{
     background:#e0f2fe;
     color:#0f172a;
     transform:rotateY(180deg);
-    padding:15px;
-    overflow:hidden; /* 🔴 sin scroll */
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .flip-back h3{
     text-align:center;
-    margin-bottom:10px;
+    margin-bottom:8px;
+    font-size:15px;
 }
 
 .flip-back ul{
-    padding-left:18px;
+    padding-left:15px;
+    margin:0;
 }
 
 .flip-back li{
-    margin-bottom:8px;
-    font-size:13px;
+    font-size:12px;
+    margin-bottom:6px;
 }
 
-/* 📱 MODO MÓVIL */
-@media (max-width: 480px){
-
-    body{
-        align-items:flex-start;
-        padding:10px;
-    }
-
-    .flip-card{
-        width:100%;
-        max-width:300px;
-        height:360px; /* 🔽 más pequeña */
-    }
-
-    .flip-front img{
-        object-fit:contain; /* 🔥 imagen se reduce completa */
-        background:black; /* relleno elegante */
-    }
-
-    .name{
-        font-size:15px;
-    }
-
-    .role{
-        font-size:12px;
-    }
-
-    .flip-back li{
-        font-size:12px;
-    }
-
-    .overlay{
-        padding:10px;
-    }
+/* 📱 AJUSTE EXTRA MÓVIL */
+@media (max-width:480px){
+    .name{ font-size:14px; }
+    .role{ font-size:11px; }
+    .flip-back li{ font-size:11px; }
 }
 
 </style>
 </head>
+
 <body>
 
 <div class="flip-card" onclick="flip(this)">
@@ -167,10 +147,10 @@ body{
 <h3>Formación Académica</h3>
 <ul>
 <li>Profesor de Educación Primaria – Nivel Tecnológico</li>
-<li>Licenciado en Ciencias de la Educación: Mención Ciencias Sociales</li>
-<li>Licenciado en Pedagogía: Mención Educación Primaria</li>
-<li>Máster Universitario en Liderazgo y Dirección de Centros Educativos</li>
-<li>Máster en Educación: Mención Docencia Universitaria</li>
+<li>Licenciado en Ciencias de la Educación</li>
+<li>Licenciado en Pedagogía</li>
+<li>Máster en Liderazgo Educativo</li>
+<li>Máster en Docencia Universitaria</li>
 </ul>
 </div>
 
