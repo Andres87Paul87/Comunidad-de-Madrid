@@ -15,7 +15,7 @@ html, body{
     padding:0;
     width:100%;
     height:100%;
-    overflow:hidden; /* 🔴 sin scroll global */
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -32,6 +32,7 @@ html, body{
     perspective:1000px;
 }
 
+/* CONTENEDOR */
 .flip-inner{
     width:100%;
     height:100%;
@@ -44,10 +45,11 @@ html, body{
     transform:rotateY(180deg);
 }
 
+/* CARAS */
 .flip-front, .flip-back{
     position:absolute;
     width:100%;
-    height:100%;
+    height:100%; /* 🔥 MISMA ALTURA SIEMPRE */
     border-radius:20px;
     backface-visibility:hidden;
     overflow:hidden;
@@ -66,7 +68,7 @@ html, body{
     object-fit:contain;
 }
 
-/* OVERLAY */
+/* TEXTO FRENTE */
 .overlay{
     position:absolute;
     bottom:0;
@@ -82,49 +84,59 @@ html, body{
 }
 
 .role{
-    font-size:13px;
+    font-size:14px;
     color:#38bdf8;
 }
 
 .name{
-    font-size:15px;
+    font-size:16px;
     font-weight:bold;
-    color:#ffffff !important;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    color:#ffffff;
+    text-shadow:0 2px 5px rgba(0,0,0,0.8);
 }
 
-/* 🔥 ATRÁS AJUSTADO */
+/* 🔥 ATRÁS CORREGIDO */
 .flip-back{
     background:#e0f2fe;
     color:#0f172a;
     transform:rotateY(180deg);
-    padding:12px;
 
-    overflow-y:auto; /* ✅ permite scroll */
+    display:flex;
+    flex-direction:column;
+
+    padding:15px;
+}
+
+/* CONTENIDO INTERNO */
+.flip-back-content{
+    flex:1;
+    overflow-y:auto; /* scroll interno */
     
-    /* 🔽 OCULTAR BARRAS */
+    /* ocultar barra */
     scrollbar-width:none;
     -ms-overflow-style:none;
 }
 
-.flip-back::-webkit-scrollbar{
+.flip-back-content::-webkit-scrollbar{
     display:none;
 }
 
+/* TEXTO MÁS GRANDE */
 .flip-back h3{
     text-align:center;
-    margin-bottom:8px;
-    font-size:15px;
+    margin-bottom:10px;
+    font-size:17px; /* 🔥 más grande */
 }
 
 .flip-back ul{
-    padding-left:15px;
+    padding-left:18px;
     margin:0;
 }
 
 .flip-back li{
-    font-size:12px;
-    margin-bottom:6px;
+    font-size:14px; /* 🔥 más grande */
+    margin-bottom:8px;
+    line-height:1.4;
 }
 
 </style>
@@ -138,7 +150,6 @@ html, body{
 <!-- FRENTE -->
 <div class="flip-front">
 <img src="images/Director.jpeg" alt="Director">
-
 <div class="overlay">
 <div class="role">DIRECTOR</div>
 <div class="name">LUIS GERARDO TITUAÑA SÁNCHEZ</div>
@@ -147,7 +158,10 @@ html, body{
 
 <!-- ATRÁS -->
 <div class="flip-back">
+
 <h3>Formación Académica</h3>
+
+<div class="flip-back-content">
 <ul>
 <li>Profesor de Educación Primaria – Nivel Tecnológico</li>
 <li>Licenciado en Ciencias de la Educación: Mención Ciencias Sociales</li>
@@ -155,6 +169,8 @@ html, body{
 <li>Máster en Liderazgo y Dirección de Centros Educativos</li>
 <li>Máster en Educación: Mención Docencia Universitaria</li>
 </ul>
+</div>
+
 </div>
 
 </div>
