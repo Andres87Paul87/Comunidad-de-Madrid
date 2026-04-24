@@ -74,7 +74,6 @@ html, body{
     width:100%;
     min-height:70px;
     background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
-    color:white;
     text-align:center;
     padding:10px;
     z-index:2;
@@ -89,11 +88,12 @@ html, body{
     color:#38bdf8;
 }
 
+/* 🔥 NOMBRE FORZADO EN BLANCO */
 .name{
     font-size:15px;
     font-weight:bold;
-    color:#ffffff; /* 🔥 blanco */
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* 🔥 mejora visibilidad */
+    color:#ffffff !important; /* 🔥 fuerza blanco */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }
 
 /* ATRÁS */
@@ -132,7 +132,12 @@ html, body{
 
 <div class="overlay">
 <div class="role">DIRECTOR</div>
-<div class="name">LUIS GERARDO TITUAÑA SÁNCHEZ</div>
+
+<!-- 🔥 también forzado en HTML -->
+<div class="name" style="color:#ffffff;">
+LUIS GERARDO TITUAÑA SÁNCHEZ
+</div>
+
 </div>
 
 </div>
