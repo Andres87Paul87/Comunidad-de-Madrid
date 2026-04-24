@@ -15,7 +15,7 @@ html, body{
     padding:0;
     width:100%;
     height:100%;
-    overflow:hidden;
+    overflow:hidden; /* 🔴 sin scroll global */
     display:flex;
     justify-content:center;
     align-items:center;
@@ -60,7 +60,6 @@ html, body{
     background:black;
 }
 
-/* IMAGEN COMPLETA */
 .flip-front img{
     width:100%;
     height:100%;
@@ -82,35 +81,45 @@ html, body{
     justify-content:center;
 }
 
-/* TEXTO */
 .role{
     font-size:13px;
     color:#38bdf8;
 }
 
-/* 🔥 NOMBRE FORZADO EN BLANCO */
 .name{
     font-size:15px;
     font-weight:bold;
-    color:#ffffff !important; /* 🔥 fuerza blanco */
+    color:#ffffff !important;
     text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }
 
-/* ATRÁS */
+/* 🔥 ATRÁS AJUSTADO */
 .flip-back{
     background:#e0f2fe;
     color:#0f172a;
     transform:rotateY(180deg);
     padding:12px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+
+    overflow-y:auto; /* ✅ permite scroll */
+    
+    /* 🔽 OCULTAR BARRAS */
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+
+.flip-back::-webkit-scrollbar{
+    display:none;
 }
 
 .flip-back h3{
     text-align:center;
     margin-bottom:8px;
     font-size:15px;
+}
+
+.flip-back ul{
+    padding-left:15px;
+    margin:0;
 }
 
 .flip-back li{
@@ -132,25 +141,19 @@ html, body{
 
 <div class="overlay">
 <div class="role">DIRECTOR</div>
-
-<!-- 🔥 también forzado en HTML -->
-<div class="name" style="color:#ffffff;">
-LUIS GERARDO TITUAÑA SÁNCHEZ
+<div class="name">LUIS GERARDO TITUAÑA SÁNCHEZ</div>
 </div>
-
-</div>
-
 </div>
 
 <!-- ATRÁS -->
 <div class="flip-back">
 <h3>Formación Académica</h3>
 <ul>
-<li>Profesor de Educación Primaria</li>
-<li>Licenciado en Ciencias de la Educación</li>
-<li>Licenciado en Pedagogía</li>
-<li>Máster en Liderazgo Educativo</li>
-<li>Máster en Docencia Universitaria</li>
+<li>Profesor de Educación Primaria – Nivel Tecnológico</li>
+<li>Licenciado en Ciencias de la Educación: Mención Ciencias Sociales</li>
+<li>Licenciado en Pedagogía: Mención Educación Primaria</li>
+<li>Máster en Liderazgo y Dirección de Centros Educativos</li>
+<li>Máster en Educación: Mención Docencia Universitaria</li>
 </ul>
 </div>
 
