@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Director</title>
 
 <style>
@@ -102,6 +103,37 @@ body{
 .flip-back li{
     margin-bottom:8px;
     font-size:13px;
+}
+
+/* 📱 AJUSTES PARA TELÉFONO */
+@media (max-width: 480px){
+
+    body{
+        padding:10px;
+        align-items:flex-start;
+    }
+
+    .flip-card{
+        width:100%;
+        max-width:320px;
+        height:380px;
+    }
+
+    .name{
+        font-size:16px;
+    }
+
+    .role{
+        font-size:12px;
+    }
+
+    .flip-back li{
+        font-size:12px;
+    }
+
+    .overlay{
+        padding:10px;
+    }
 }
 
 </style>
