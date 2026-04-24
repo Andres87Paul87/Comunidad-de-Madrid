@@ -32,7 +32,6 @@ html, body{
     perspective:1000px;
 }
 
-/* CONTENIDO */
 .flip-inner{
     width:100%;
     height:100%;
@@ -57,30 +56,34 @@ html, body{
 
 /* FRENTE */
 .flip-front{
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    align-items:center;
+    position:relative;
     background:black;
 }
 
-/* 🔥 IMAGEN COMPLETA REAL */
+/* IMAGEN COMPLETA */
 .flip-front img{
     width:100%;
     height:100%;
-    object-fit:contain; /* muestra todo */
+    object-fit:contain;
+}
+
+/* 🔥 OVERLAY SIEMPRE VISIBLE */
+.overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    min-height:70px;
+    background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+    color:white;
+    text-align:center;
+    padding:10px;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 /* TEXTO */
-.overlay{
-    width:100%;
-    background:rgba(0,0,0,0.6);
-    padding:10px;
-    text-align:center;
-    position:absolute;
-    bottom:0;
-}
-
 .role{
     font-size:13px;
     color:#38bdf8;
@@ -124,10 +127,12 @@ html, body{
 <!-- FRENTE -->
 <div class="flip-front">
 <img src="images/Director.jpeg" alt="Director">
+
 <div class="overlay">
 <div class="role">DIRECTOR</div>
 <div class="name">LUIS GERARDO TITUAÑA SÁNCHEZ</div>
 </div>
+
 </div>
 
 <!-- ATRÁS -->
