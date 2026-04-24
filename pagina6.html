@@ -6,7 +6,6 @@
 
 <style>
 
-/* 🔴 RESET TOTAL */
 *{
     box-sizing:border-box;
 }
@@ -59,28 +58,27 @@ html, body{
 /* FRENTE */
 .flip-front{
     display:flex;
+    flex-direction:column;
     justify-content:flex-end;
-    align-items:flex-end;
-    color:white;
+    align-items:center;
+    background:black;
 }
 
-/* 🔥 IMAGEN COMPLETA SIN RECORTE */
+/* 🔥 IMAGEN COMPLETA REAL */
 .flip-front img{
-    position:absolute;
     width:100%;
     height:100%;
-    object-fit:contain; /* ✅ muestra toda la imagen */
-    background:black;   /* relleno elegante */
-    top:0;
-    left:0;
+    object-fit:contain; /* muestra todo */
 }
 
 /* TEXTO */
 .overlay{
     width:100%;
     background:rgba(0,0,0,0.6);
-    padding:12px;
+    padding:10px;
     text-align:center;
+    position:absolute;
+    bottom:0;
 }
 
 .role{
@@ -89,7 +87,7 @@ html, body{
 }
 
 .name{
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
 }
 
@@ -110,21 +108,9 @@ html, body{
     font-size:15px;
 }
 
-.flip-back ul{
-    padding-left:15px;
-    margin:0;
-}
-
 .flip-back li{
     font-size:12px;
     margin-bottom:6px;
-}
-
-/* 📱 MÓVIL */
-@media (max-width:480px){
-    .name{ font-size:14px; }
-    .role{ font-size:11px; }
-    .flip-back li{ font-size:11px; }
 }
 
 </style>
@@ -148,7 +134,7 @@ html, body{
 <div class="flip-back">
 <h3>Formación Académica</h3>
 <ul>
-<li>Profesor de Educación Primaria – Nivel Tecnológico</li>
+<li>Profesor de Educación Primaria</li>
 <li>Licenciado en Ciencias de la Educación</li>
 <li>Licenciado en Pedagogía</li>
 <li>Máster en Liderazgo Educativo</li>
