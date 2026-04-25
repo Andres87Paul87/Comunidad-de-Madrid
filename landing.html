@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Escudo Giratorio Elegante</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Fondo acorde */
+  background: radial-gradient(circle at center, #b30000, #4d0000, #000);
+}
+
+/* Contenedor 3D */
+.contenedor {
+  perspective: 1200px;
+}
+
+/* Moneda */
+.moneda {
+  width: 320px;
+  height: 420px; /* mantiene proporción vertical */
+  position: relative;
+  transform-style: preserve-3d;
+  animation: girar 7s infinite linear;
+}
+
+/* Cara frontal y trasera */
+.cara {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+
+  /* Marco dorado estilo griego */
+  border: 8px solid;
+  border-image: linear-gradient(45deg, gold, #ffd700, #b8860b, gold) 1;
+
+  box-shadow: 0 0 25px rgba(255,215,0,0.7);
+}
+
+/* Imagen */
+.cara img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Parte trasera */
+.trasera {
+  transform: rotateY(180deg);
+}
+
+/* Giro */
+@keyframes girar {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Brillo interno */
+.brillo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.8) 50%,
+    transparent 70%
+  );
+
+  mix-blend-mode: screen;
+  opacity: 0.7;
+
+  animation: destello 3s infinite;
+}
+
+/* Movimiento del brillo */
+@keyframes destello {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-20deg);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+  <div class="moneda">
+
+    <div class="cara frontal">
+      <img src="images/Sello.jpg">
+      <div class="brillo"></div>
+    </div>
+
+    <div class="cara trasera">
+      <img src="images/Sello.jpg">
+      <div class="brillo"></div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
