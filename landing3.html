@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Escuela Educación Básica Fiscal "Comunidad de Madrid"</title>
+<title>Escudo Giratorio</title>
 
 <style>
 body {
@@ -15,11 +15,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Contenedor general */
 .wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 🔥 centra perfectamente */
+  align-items: center;
 }
 
 /* Escudo */
@@ -66,26 +65,23 @@ body {
 .boton {
   display: inline-flex;
   align-items: center;
-  gap: 6px; /* espacio icono-texto */
+  gap: 6px;
   padding: 10px 14px;
   font-size: 14px;
   color: white;
   background: linear-gradient(45deg,#ffcc00,#ff9900);
   border-radius: 25px;
   box-shadow: 0 0 10px rgba(255,165,0,0.6);
-  text-decoration: none;
+  cursor: pointer;
   transition: 0.2s;
 }
 
-/* Hover */
 .boton:hover {
   transform: scale(1.08);
 }
 
-/* 🔥 Efecto clic real */
 .boton:active {
   transform: scale(0.92);
-  box-shadow: 0 0 5px rgba(255,165,0,0.5);
 }
 </style>
 </head>
@@ -106,14 +102,28 @@ body {
     </div>
   </div>
 
-  <!-- Botón centrado -->
-  <a href="https://sites.google.com/view/eebf-comunidad-de-madrid/inicio"
-     target="_top"
-     class="boton">
-     🔗 Entrar
-  </a>
+  <!-- Botón -->
+  <div class="boton" onclick="abrir()">
+    🔗 Entrar
+  </div>
 
 </div>
+
+<script>
+function abrir() {
+  const url = "https://sites.google.com/view/eebf-comunidad-de-madrid/inicio";
+
+  // 🔥 intentos para salir del visor
+  window.location.href = url;
+  window.top.location.href = url;
+  window.parent.location.href = url;
+
+  // respaldo
+  setTimeout(() => {
+    window.open(url, "_top");
+  }, 200);
+}
+</script>
 
 </body>
 </html>
