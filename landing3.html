@@ -2,95 +2,54 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Escuela Educación Básica Fiscal "Comunidad de Madrid"</title>
+<title>Entrada</title>
 
 <style>
 body {
   margin: 0;
+  background: #000;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #000;
   font-family: Arial, sans-serif;
 }
 
+/* Contenedor */
 .contenedor {
-  perspective: 1200px;
+  text-align: center;
 }
 
-.moneda {
-  width: 240px;
-  height: 320px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: girar 7s infinite linear;
-}
-
-.cara {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+/* Imagen */
+.imagen {
+  width: 220px;
+  height: 300px;
   border-radius: 12px;
   overflow: hidden;
-  border: 6px solid;
-  border-image: linear-gradient(45deg, gold, #ffd700, #b8860b, gold) 1;
+  border: 6px solid gold;
   box-shadow: 0 0 20px rgba(255,215,0,0.6);
+  margin-bottom: 40px;
+  transition: 0.3s;
 }
 
-.cara img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.imagen:hover {
+  transform: scale(1.05);
 }
 
-.trasera {
-  transform: rotateY(180deg);
-}
-
-@keyframes girar {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
-}
-
-.brillo {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255,255,255,0.8) 50%,
-    transparent 70%
-  );
-  mix-blend-mode: screen;
-  opacity: 0.6;
-  animation: destello 3s infinite;
-}
-
-@keyframes destello {
-  0% { transform: translateX(-100%) skewX(-20deg); }
-  100% { transform: translateX(200%) skewX(-20deg); }
-}
-
+/* Botón */
 .boton {
-  margin-top: 90px;
-  padding: 14px 30px;
+  display: inline-block;
+  padding: 16px 40px;
   font-size: 18px;
-  color: white;
-  background: linear-gradient(45deg, #ffcc00, #ff9900);
-  border: none;
+  color: #fff;
+  background: linear-gradient(45deg,#ffcc00,#ff9900);
   border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(255,165,0,0.6);
+  box-shadow: 0 0 15px rgba(255,165,0,0.7);
+  transition: 0.3s;
 }
 
-.boton:active {
-  transform: scale(0.95);
+.boton:hover {
+  transform: scale(1.1);
 }
 </style>
 </head>
@@ -98,39 +57,24 @@ body {
 <body>
 
 <div class="contenedor">
-  <div class="moneda">
-    <div class="cara frontal">
-      <img src="images/Sello.jpg">
-      <div class="brillo"></div>
+
+  <!-- TODO clickeable -->
+  <a href="https://sites.google.com/view/eebf-comunidad-de-madrid/inicio"
+     target="_top"
+     style="text-decoration:none;">
+
+    <div class="imagen">
+      <img src="https://TU-IMAGEN-AQUI.jpg"
+           style="width:100%; height:100%; object-fit:cover;">
     </div>
 
-    <div class="cara trasera">
-      <img src="images/Sello.jpg">
-      <div class="brillo"></div>
+    <div class="boton">
+      Entrar
     </div>
-  </div>
+
+  </a>
+
 </div>
-
-<button class="boton" onclick="entrar()">Entrar</button>
-
-<audio id="sonido" preload="auto">
-  <source src="sonido/Himno.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function entrar() {
-  const audio = document.getElementById("sonido");
-
-  // 🔊 reproducir dentro del clic (CLAVE)
-  audio.currentTime = 0;
-  audio.play();
-
-  // ⏱️ esperar un poco para que sí se escuche
-  setTimeout(() => {
-    window.location.replace("https://sites.google.com/view/eebf-comunidad-de-madrid/inicio");
-  }, 800); // puedes subir a 1500 si quieres más sonido
-}
-</script>
 
 </body>
 </html>
