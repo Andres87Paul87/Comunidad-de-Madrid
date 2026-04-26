@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Escuela Educación Básica Fiscal "Comunidad de Madrid"</title>
+<title>Escudo Giratorio Elegante</title>
 
 <style>
 body {
@@ -19,13 +19,12 @@ body {
 /* Contenedor */
 .contenedor {
   perspective: 1200px;
-  margin-bottom: 30px;
 }
 
 /* Moneda más pequeña */
 .moneda {
-  width: 240px;   /* 🔽 reducido */
-  height: 320px;  /* 🔽 reducido */
+  width: 240px;
+  height: 320px;
   position: relative;
   transform-style: preserve-3d;
   animation: girar 7s infinite linear;
@@ -83,8 +82,9 @@ body {
   100% { transform: translateX(200%) skewX(-20deg); }
 }
 
-/* 🔥 Botón elegante */
+/* 🔘 Botón más abajo */
 .boton {
+  margin-top: 80px; /* 🔽 baja el botón */
   padding: 14px 30px;
   font-size: 18px;
   color: white;
@@ -122,19 +122,21 @@ body {
 </div>
 
 <!-- 🔘 Botón -->
-<button class="boton" onclick="entrar()">Entrar</button>
+<button class="boton" onclick="ir()">Entrar</button>
 
 <!-- 🔊 Sonido -->
-<audio id="sonido" src="sonido/Himno.mp3"></audio>
+<audio id="sonido" src="sonido.mp3" autoplay></audio>
 
 <script>
-function entrar() {
+// 🔊 Forzar reproducción al cargar (por compatibilidad)
+window.onload = function() {
   let audio = document.getElementById("sonido");
-  audio.play();
+  audio.play().catch(() => {});
+};
 
-  setTimeout(function() {
-    window.location.href = "https://sites.google.com/view/eebf-comunidad-de-madrid/inicio";
-  }, 4000);
+// ⚡ Abrir link inmediatamente
+function ir() {
+  window.location.href = "https://sites.google.com/view/eebf-comunidad-de-madrid/inicio";
 }
 </script>
 
