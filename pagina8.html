@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Dirección</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* CONTENEDOR */
+.card-container {
+  perspective: 1200px;
+}
+
+/* TARJETA */
+.card {
+  width: 320px;
+  height: 420px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  cursor: pointer;
+}
+
+/* HOVER PC */
+.card-container:hover .card {
+  transform: rotateY(180deg);
+}
+
+/* CARAS */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* FRENTE */
+.card-front {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-front img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* TEXTO FRENTE */
+.front-text {
+  position: relative;
+  padding: 15px;
+  text-align: center;
+}
+
+.front-text h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.front-text p {
+  margin: 5px 0 0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ATRÁS */
+.card-back {
+  background: white;
+  color: #333;
+  transform: rotateY(180deg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* LISTA */
+.card-back ul {
+  padding-left: 14px;
+  margin: 0;
+}
+
+.card-back li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* 📱 MÓVIL */
+@media (max-width: 480px) {
+
+  .card {
+    width: 160px;
+    height: 210px;
+  }
+
+  /* TEXTO FRENTE */
+  .front-text h2 {
+    font-size: 12px;
+  }
+
+  .front-text p {
+    font-size: 9px;
+  }
+
+  /* BACK MÁS ORDENADO */
+  .card-back {
+    padding: 8px;
+  }
+
+  .card-back ul {
+    padding-left: 12px;
+  }
+
+  .card-back li {
+    font-size: 8px;      /* 👈 más pequeño */
+    line-height: 1.2;    /* 👈 mejor distribución */
+    margin-bottom: 6px;  /* 👈 espacio entre líneas */
+  }
+
+  /* quitar hover en móvil */
+  .card-container:hover .card {
+    transform: none;
+  }
+}
+
+/* CLICK (MÓVIL Y PC) */
+.card.flip {
+  transform: rotateY(180deg);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-container">
+  <div class="card" onclick="this.classList.toggle('flip')">
+
+    <!-- FRENTE -->
+    <div class="card-face card-front">
+      <img src="images/SM.jpeg" alt="Subdirección Matutina">
+           <div class="front-text">
+        <h2>SUBDIRECCIÓN VESPERTINA</h2>
+        <p>JUAN FRANCISCO TOCAGÓN CABASCANGO</p>
+      </div>
+    </div>
+
+    <!-- ATRÁS -->
+    <div class="card-face card-back">
+      <ul>
+        <li>Licenciado en Ciencias de la Educación: Mención Ciencias Sociales</li>
+        <li>Especialista en Gestión de la Calidad en Educación: Mención Gestión Pedagógica</li>
+        <li>Máster Universitario en Liderazgo y Dirección de Centros Educativos</li>
+        <li>Máster Universitario en Educación Inclusiva e Intercultural</li>
+      
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
