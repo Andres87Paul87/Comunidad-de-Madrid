@@ -9,20 +9,23 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #000000;
+  font-family: Arial, sans-serif;
 }
 
-/* Contenedor 3D */
+/* Contenedor */
 .contenedor {
   perspective: 1200px;
+  margin-bottom: 30px;
 }
 
-/* Moneda */
+/* Moneda más pequeña */
 .moneda {
-  width: 320px;
-  height: 420px;
+  width: 240px;   /* 🔽 reducido */
+  height: 320px;  /* 🔽 reducido */
   position: relative;
   transform-style: preserve-3d;
   animation: girar 7s infinite linear;
@@ -37,9 +40,9 @@ body {
   border-radius: 12px;
   overflow: hidden;
 
-  border: 8px solid;
+  border: 6px solid;
   border-image: linear-gradient(45deg, gold, #ffd700, #b8860b, gold) 1;
-  box-shadow: 0 0 25px rgba(255,215,0,0.7);
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
 }
 
 .cara img {
@@ -71,13 +74,31 @@ body {
     transparent 70%
   );
   mix-blend-mode: screen;
-  opacity: 0.7;
+  opacity: 0.6;
   animation: destello 3s infinite;
 }
 
 @keyframes destello {
   0% { transform: translateX(-100%) skewX(-20deg); }
   100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+/* 🔥 Botón elegante */
+.boton {
+  padding: 14px 30px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,165,0,0.6);
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255,165,0,0.9);
 }
 </style>
 </head>
@@ -100,20 +121,21 @@ body {
   </div>
 </div>
 
+<!-- 🔘 Botón -->
+<button class="boton" onclick="entrar()">Entrar</button>
+
 <!-- 🔊 Sonido -->
 <audio id="sonido" src="sonido/Himno.mp3"></audio>
 
 <script>
-// Reproducir sonido al cargar
-window.onload = function() {
+function entrar() {
   let audio = document.getElementById("sonido");
-  audio.play().catch(() => {});
+  audio.play();
 
-  // Redirigir después de 4 segundos (misma pestaña)
   setTimeout(function() {
     window.location.href = "https://sites.google.com/view/eebf-comunidad-de-madrid/inicio";
   }, 4000);
-};
+}
 </script>
 
 </body>
