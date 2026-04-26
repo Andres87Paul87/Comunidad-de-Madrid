@@ -87,11 +87,10 @@ body {
   border-radius: 30px;
   cursor: pointer;
   box-shadow: 0 0 15px rgba(255,165,0,0.6);
-  transition: 0.3s;
 }
 
-.boton:hover {
-  transform: scale(1.1);
+.boton:active {
+  transform: scale(0.95);
 }
 </style>
 </head>
@@ -112,30 +111,24 @@ body {
   </div>
 </div>
 
-<button class="boton" onclick="ir()">Entrar</button>
+<button class="boton" onclick="entrar()">Entrar</button>
 
-<audio id="sonido" src="sonido/Himno.mp3" preload="auto"></audio>
+<audio id="sonido" preload="auto">
+  <source src="sonido/Himno.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-const audio = document.getElementById("sonido");
+function entrar() {
+  const audio = document.getElementById("sonido");
 
-// 🔊 Intentar reproducir al cargar (solo funciona en algunos navegadores)
-window.addEventListener("load", () => {
-  audio.play().catch(() => {
-    // Si falla, se activará al primer toque
-  });
-});
+  // 🔊 reproducir dentro del clic (CLAVE)
+  audio.currentTime = 0;
+  audio.play();
 
-// 🔊 Activar sonido en el primer toque (SOLUCIÓN REAL)
-document.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play();
-  }
-}, { once: true });
-
-// 🚀 Ir al enlace rápido
-function ir() {
-  window.location.replace("https://sites.google.com/view/eebf-comunidad-de-madrid/inicio");
+  // ⏱️ esperar un poco para que sí se escuche
+  setTimeout(() => {
+    window.location.replace("https://sites.google.com/view/eebf-comunidad-de-madrid/inicio");
+  }, 800); // puedes subir a 1500 si quieres más sonido
 }
 </script>
 
