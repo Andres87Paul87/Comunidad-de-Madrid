@@ -32,11 +32,6 @@ body {
   cursor: pointer;
 }
 
-/* HOVER PC */
-.card-container:hover .card {
-  transform: rotateY(180deg);
-}
-
 /* CARAS */
 .card-face {
   position: absolute;
@@ -62,7 +57,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
 
 /* TEXTO FRENTE */
 .front-text {
@@ -132,14 +126,9 @@ body {
   }
 
   .card-back li {
-    font-size: 8px;      /* 👈 más pequeño */
-    line-height: 1.2;    /* 👈 mejor distribución */
-    margin-bottom: 6px;  /* 👈 espacio entre líneas */
-  }
-
-  /* quitar hover en móvil */
-  .card-container:hover .card {
-    transform: none;
+    font-size: 8px;
+    line-height: 1.2;
+    margin-bottom: 6px;
   }
 }
 
@@ -158,7 +147,7 @@ body {
     <!-- FRENTE -->
     <div class="card-face card-front">
       <img src="images/SM.jpeg" alt="Subdirección Matutina">
-           <div class="front-text">
+      <div class="front-text">
         <h2>SUBDIRECCIÓN MATUTINA</h2>
         <p>MERCY MIROPE VÉLEZ RODRÍGUEZ</p>
       </div>
@@ -170,7 +159,6 @@ body {
         <li>Profesora en Educación Primaria</li>
         <li>Licenciada en Gestión de la Educación</li>
         <li>Master en Educación: Mención Docencia Universitaria</li>
-      
       </ul>
     </div>
 
