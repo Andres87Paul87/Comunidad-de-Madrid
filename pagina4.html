@@ -6,24 +6,35 @@
 <title>Laboratorio de Computación</title>
 
 <style>
-/* Elimina el sombreado azul al tocar en móviles */
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
 * {
-  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* Quita el sombreado azul en móviles */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Evita scroll horizontal */
 }
 
 body {
-  margin: 0;
+  min-height: 100vh;
   padding: 20px;
   font-family: Arial, sans-serif;
   background: #e0e0e0;
   text-align: center;
 }
 
-/* MARCO */
+/* =========================
+   MARCO DEL LABORATORIO
+   ========================= */
 .marco {
   display: inline-block;
-  background: white;
+  background: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
@@ -31,7 +42,9 @@ body {
   max-width: 100%;
 }
 
-/* PIZARRA */
+/* =========================
+   PIZARRA
+   ========================= */
 .pizarra {
   margin: 0 auto 30px auto;
   width: 500px;
@@ -40,7 +53,7 @@ body {
   background: #2d572c;
   border: 8px solid #8b5a2b;
   border-radius: 8px;
-  color: white;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +61,9 @@ body {
   font-weight: bold;
 }
 
-/* LABORATORIO */
+/* =========================
+   CUADRÍCULA DEL LABORATORIO
+   ========================= */
 .lab {
   display: grid;
   grid-template-columns: repeat(3, 120px) 80px repeat(2, 120px);
@@ -56,7 +71,9 @@ body {
   justify-content: center;
 }
 
-/* PC */
+/* =========================
+   PC
+   ========================= */
 .pc {
   width: 120px;
   height: 90px;
@@ -72,7 +89,7 @@ body {
   display: block;
 }
 
-/* Quitar foco */
+/* Elimina borde azul al hacer clic */
 .pc:focus,
 .pc:active,
 .pc:focus-visible {
@@ -80,15 +97,17 @@ body {
   box-shadow: none !important;
 }
 
-/* TOOLTIP */
+/* =========================
+   TOOLTIP
+   ========================= */
 .pc::after {
   content: attr(data-info);
   position: absolute;
   bottom: 110%;
   left: 50%;
   transform: translateX(-50%);
-  background: black;
-  color: white;
+  background: #000;
+  color: #fff;
   padding: 8px;
   border-radius: 6px;
   font-size: 12px;
@@ -105,67 +124,90 @@ body {
   opacity: 1;
 }
 
-/* RESPONSIVO TABLET Y MÓVIL */
+/* =========================
+   RESPONSIVO PARA MÓVILES
+   ========================= */
 @media (max-width: 768px) {
   body {
-    padding: 10px;
+    padding: 8px;
+    overflow-x: hidden;
   }
 
   .marco {
     display: block;
     width: 100%;
-    padding: 15px;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0 auto;
   }
 
   .pizarra {
     width: 100%;
-    height: 80px;
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  .lab {
-    grid-template-columns: repeat(3, 80px) 30px repeat(2, 80px);
-    gap: 10px;
-  }
-
-  .pc {
-    width: 80px;
-    height: 60px;
-  }
-
-  .pc::after {
-    font-size: 10px;
-    padding: 6px;
-    max-width: 120px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-}
-
-/* MÓVILES PEQUEÑOS */
-@media (max-width: 480px) {
-  .lab {
-    grid-template-columns: repeat(3, 60px) 20px repeat(2, 60px);
-    gap: 8px;
-  }
-
-  .pc {
-    width: 60px;
-    height: 45px;
-  }
-
-  .pizarra {
     height: 70px;
     font-size: 16px;
+    margin-bottom: 15px;
+    border-width: 5px;
+  }
+
+  .lab {
+    width: 100%;
+    justify-content: center;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr))
+      4vw
+      repeat(2, minmax(0, 1fr));
+    gap: 2vw;
+  }
+
+  .pc {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    min-width: 0;
   }
 
   .pc::after {
     font-size: 9px;
+    max-width: 110px;
     padding: 5px;
-    max-width: 100px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 6px;
+  }
+
+  .marco {
+    padding: 8px;
+  }
+
+  .pizarra {
+    height: 60px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .lab {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr))
+      3vw
+      repeat(2, minmax(0, 1fr));
+    gap: 1.5vw;
+  }
+
+  .pc::after {
+    font-size: 8px;
+    max-width: 90px;
+  }
+
+  h2 {
+    font-size: 16px;
   }
 }
 </style>
