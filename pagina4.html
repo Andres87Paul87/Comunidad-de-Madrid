@@ -1,21 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Laboratorio de Computación</title>
 
 <style>
+/* Elimina el sombreado azul al tocar en móviles */
 * {
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 body {
+  margin: 0;
+  padding: 20px;
   font-family: Arial, sans-serif;
   background: #e0e0e0;
   text-align: center;
 }
 
+/* MARCO */
 .marco {
   display: inline-block;
   background: white;
@@ -23,11 +28,14 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   overflow: visible;
+  max-width: 100%;
 }
 
+/* PIZARRA */
 .pizarra {
   margin: 0 auto 30px auto;
   width: 500px;
+  max-width: 100%;
   height: 120px;
   background: #2d572c;
   border: 8px solid #8b5a2b;
@@ -40,6 +48,7 @@ body {
   font-weight: bold;
 }
 
+/* LABORATORIO */
 .lab {
   display: grid;
   grid-template-columns: repeat(3, 120px) 80px repeat(2, 120px);
@@ -47,6 +56,7 @@ body {
   justify-content: center;
 }
 
+/* PC */
 .pc {
   width: 120px;
   height: 90px;
@@ -59,8 +69,10 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
+/* Quitar foco */
 .pc:focus,
 .pc:active,
 .pc:focus-visible {
@@ -68,6 +80,7 @@ body {
   box-shadow: none !important;
 }
 
+/* TOOLTIP */
 .pc::after {
   content: attr(data-info);
   position: absolute;
@@ -80,76 +93,141 @@ body {
   border-radius: 6px;
   font-size: 12px;
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity 0.3s;
   white-space: pre-line;
   text-align: left;
   z-index: 999;
+  pointer-events: none;
 }
 
-.pc:hover::after {
+.pc:hover::after,
+.pc:active::after {
   opacity: 1;
+}
+
+/* RESPONSIVO TABLET Y MÓVIL */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .marco {
+    display: block;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .pizarra {
+    width: 100%;
+    height: 80px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .lab {
+    grid-template-columns: repeat(3, 80px) 30px repeat(2, 80px);
+    gap: 10px;
+  }
+
+  .pc {
+    width: 80px;
+    height: 60px;
+  }
+
+  .pc::after {
+    font-size: 10px;
+    padding: 6px;
+    max-width: 120px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+/* MÓVILES PEQUEÑOS */
+@media (max-width: 480px) {
+  .lab {
+    grid-template-columns: repeat(3, 60px) 20px repeat(2, 60px);
+    gap: 8px;
+  }
+
+  .pc {
+    width: 60px;
+    height: 45px;
+  }
+
+  .pizarra {
+    height: 70px;
+    font-size: 16px;
+  }
+
+  .pc::after {
+    font-size: 9px;
+    padding: 5px;
+    max-width: 100px;
+  }
 }
 </style>
 </head>
-
 <body>
 
 <h2>Laboratorio de Computación</h2>
 
 <div class="marco">
-<div class="pizarra">PIZARRA</div>
+  <div class="pizarra">PIZARRA</div>
 
-<div class="lab">
+  <div class="lab">
 
-<!-- FILA 1 -->
-<div class="pc" data-info="PC1\nCPU: Intel i5\nRAM: 8GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC2\nCPU: Intel i3\nRAM: 4GB\nMainboard: Gigabyte"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC3\nCPU: Ryzen 5\nRAM: 16GB\nMainboard: MSI"><img src="images/pc.png"></div>
-<div></div>
-<div class="pc" data-info="PC4\nCPU: Intel i7\nRAM: 16GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC5\nCPU: Ryzen 7\nRAM: 32GB\nMainboard: MSI"><img src="images/pc.png"></div>
+    <!-- FILA 1 -->
+    <div class="pc" data-info="PC1&#10;CPU: Intel i5&#10;RAM: 8GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC1"></div>
+    <div class="pc" data-info="PC2&#10;CPU: Intel i3&#10;RAM: 4GB&#10;Mainboard: Gigabyte"><img src="pc.png" alt="PC2"></div>
+    <div class="pc" data-info="PC3&#10;CPU: Ryzen 5&#10;RAM: 16GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC3"></div>
+    <div></div>
+    <div class="pc" data-info="PC4&#10;CPU: Intel i7&#10;RAM: 16GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC4"></div>
+    <div class="pc" data-info="PC5&#10;CPU: Ryzen 7&#10;RAM: 32GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC5"></div>
 
-<!-- FILA 2 -->
-<div class="pc" data-info="PC6\nCPU: Intel i5\nRAM: 8GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC7\nCPU: Intel i3\nRAM: 4GB\nMainboard: Gigabyte"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC8\nCPU: Ryzen 5\nRAM: 8GB\nMainboard: MSI"><img src="images/pc.png"></div>
-<div></div>
-<div class="pc" data-info="PC9\nCPU: Intel i7\nRAM: 16GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC10\nCPU: Ryzen 7\nRAM: 32GB\nMainboard: MSI"><img src="images/pc.png"></div>
+    <!-- FILA 2 -->
+    <div class="pc" data-info="PC6&#10;CPU: Intel i5&#10;RAM: 8GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC6"></div>
+    <div class="pc" data-info="PC7&#10;CPU: Intel i3&#10;RAM: 4GB&#10;Mainboard: Gigabyte"><img src="pc.png" alt="PC7"></div>
+    <div class="pc" data-info="PC8&#10;CPU: Ryzen 5&#10;RAM: 8GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC8"></div>
+    <div></div>
+    <div class="pc" data-info="PC9&#10;CPU: Intel i7&#10;RAM: 16GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC9"></div>
+    <div class="pc" data-info="PC10&#10;CPU: Ryzen 7&#10;RAM: 32GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC10"></div>
 
-<!-- FILA 3 -->
-<div class="pc" data-info="PC11\nCPU: Intel i5\nRAM: 8GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC12\nCPU: Intel i3\nRAM: 4GB\nMainboard: Gigabyte"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC13\nCPU: Ryzen 5\nRAM: 16GB\nMainboard: MSI"><img src="images/pc.png"></div>
-<div></div>
-<div class="pc" data-info="PC14\nCPU: Intel i7\nRAM: 16GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC15\nCPU: Ryzen 7\nRAM: 32GB\nMainboard: MSI"><img src="images/pc.png"></div>
+    <!-- FILA 3 -->
+    <div class="pc" data-info="PC11&#10;CPU: Intel i5&#10;RAM: 8GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC11"></div>
+    <div class="pc" data-info="PC12&#10;CPU: Intel i3&#10;RAM: 4GB&#10;Mainboard: Gigabyte"><img src="pc.png" alt="PC12"></div>
+    <div class="pc" data-info="PC13&#10;CPU: Ryzen 5&#10;RAM: 16GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC13"></div>
+    <div></div>
+    <div class="pc" data-info="PC14&#10;CPU: Intel i7&#10;RAM: 16GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC14"></div>
+    <div class="pc" data-info="PC15&#10;CPU: Ryzen 7&#10;RAM: 32GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC15"></div>
 
-<!-- FILA 4 -->
-<div class="pc" data-info="PC16\nCPU: Intel i5\nRAM: 8GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC17\nCPU: Intel i3\nRAM: 4GB\nMainboard: Gigabyte"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC18\nCPU: Ryzen 5\nRAM: 8GB\nMainboard: MSI"><img src="images/pc.png"></div>
-<div></div>
-<div class="pc" data-info="PC19\nCPU: Intel i7\nRAM: 16GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC20\nCPU: Ryzen 7\nRAM: 32GB\nMainboard: MSI"><img src="images/pc.png"></div>
+    <!-- FILA 4 -->
+    <div class="pc" data-info="PC16&#10;CPU: Intel i5&#10;RAM: 8GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC16"></div>
+    <div class="pc" data-info="PC17&#10;CPU: Intel i3&#10;RAM: 4GB&#10;Mainboard: Gigabyte"><img src="pc.png" alt="PC17"></div>
+    <div class="pc" data-info="PC18&#10;CPU: Ryzen 5&#10;RAM: 8GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC18"></div>
+    <div></div>
+    <div class="pc" data-info="PC19&#10;CPU: Intel i7&#10;RAM: 16GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC19"></div>
+    <div class="pc" data-info="PC20&#10;CPU: Ryzen 7&#10;RAM: 32GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC20"></div>
 
-<!-- FILA 5 -->
-<div class="pc" data-info="PC21\nCPU: Intel i5\nRAM: 8GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC22\nCPU: Intel i3\nRAM: 4GB\nMainboard: Gigabyte"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC23\nCPU: Ryzen 5\nRAM: 16GB\nMainboard: MSI"><img src="images/pc.png"></div>
-<div></div>
-<div></div>
-<div></div>
+    <!-- FILA 5 -->
+    <div class="pc" data-info="PC21&#10;CPU: Intel i5&#10;RAM: 8GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC21"></div>
+    <div class="pc" data-info="PC22&#10;CPU: Intel i3&#10;RAM: 4GB&#10;Mainboard: Gigabyte"><img src="pc.png" alt="PC22"></div>
+    <div class="pc" data-info="PC23&#10;CPU: Ryzen 5&#10;RAM: 16GB&#10;Mainboard: MSI"><img src="pc.png" alt="PC23"></div>
+    <div></div>
+    <div></div>
+    <div></div>
 
-<!-- FILA 6 -->
-<div></div>
-<div class="pc" data-info="PC24\nCPU: Intel i5\nRAM: 8GB\nMainboard: ASUS"><img src="images/pc.png"></div>
-<div class="pc" data-info="PC25\nCPU: Intel i3\nRAM: 4GB\nMainboard: Gigabyte"><img src="images/pc.png"></div>
-<div></div>
-<div></div>
-<div></div>
+    <!-- FILA 6 -->
+    <div></div>
+    <div class="pc" data-info="PC24&#10;CPU: Intel i5&#10;RAM: 8GB&#10;Mainboard: ASUS"><img src="pc.png" alt="PC24"></div>
+    <div class="pc" data-info="PC25&#10;CPU: Intel i3&#10;RAM: 4GB&#10;Mainboard: Gigabyte"><img src="pc.png" alt="PC25"></div>
+    <div></div>
+    <div></div>
+    <div></div>
 
-</div>
+  </div>
 </div>
 
 </body>
